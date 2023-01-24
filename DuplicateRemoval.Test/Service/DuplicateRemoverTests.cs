@@ -14,8 +14,7 @@ namespace DuplicateRemoval.Test.Service
                 "2,Fred",
                 "1,John"
             };
-            var sut = new DuplicateRemover();
-            sut.SetStrategy(new PurgeAlgorithm1());
+            var sut = new DuplicateRemover(new PurgeAlgorithm1());
             sut.AddFileData(data);
             var result = sut.Purge();
             Assert.Equal(2, result.Count);
@@ -33,8 +32,7 @@ namespace DuplicateRemoval.Test.Service
                 "1,John",
                 "2,Fred",
             };
-            var sut = new DuplicateRemover();
-            sut.SetStrategy(new PurgeAlgorithm2());
+            var sut = new DuplicateRemover(new PurgeAlgorithm2());
             sut.AddFileData(data);
             var result = sut.Purge();
             Assert.Equal(1, result.Count(x => x == "1,John"));

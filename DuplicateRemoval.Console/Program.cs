@@ -27,26 +27,27 @@ if (!fileManager.FileExists(fileName))
 }
 
 var fileData = fileManager.GetFileData(fileName);
-DuplicateRemover duplicateRemover = new();
-duplicateRemover.AddFileData(fileData);
+DuplicateRemover duplicateRemover;
 
 switch (fileName)
 {
     case "Sheet1.csv":
-        duplicateRemover.SetStrategy(new PurgeAlgorithm1());
+        duplicateRemover = new DuplicateRemover(new PurgeAlgorithm1());
         break;
     case "Sheet2.csv":
-        duplicateRemover.SetStrategy(new PurgeAlgorithm2());
+        duplicateRemover = new DuplicateRemover(new PurgeAlgorithm2());
         break;
     case "Sheet3.csv":
-        duplicateRemover.SetStrategy(new PurgeAlgorithm3());
+        duplicateRemover = new DuplicateRemover(new PurgeAlgorithm3());
         break;
     case "Sheet4.csv":
-        duplicateRemover.SetStrategy(new PurgeAlgorithm4());
+        duplicateRemover = new DuplicateRemover(new PurgeAlgorithm4());
         break;
     default:
         throw new ArgumentException("The filename provided is invalid");
 }
+
+duplicateRemover.AddFileData(fileData);
 
 var result = duplicateRemover.Purge();
 

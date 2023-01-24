@@ -2,13 +2,14 @@
 {
     public class DuplicateRemover
     {
-        private List<string> dataList = new();
-        private DuplicateRemovalStrategy strategy;
-
-        public void SetStrategy(DuplicateRemovalStrategy duplicateRemovalStrategy)
+        public DuplicateRemover(DuplicateRemovalStrategy duplicateRemovalStrategy)
         {
             strategy = duplicateRemovalStrategy;
         }
+
+        private List<string> dataList = new();
+        private DuplicateRemovalStrategy strategy;
+
         public void AddFileData(IList<string> data)
         {
             dataList.AddRange(data);
