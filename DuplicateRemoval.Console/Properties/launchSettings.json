@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DuplicateRemoval.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "Sheet1.csv"
+    }
+  }
+}
